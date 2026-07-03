@@ -9,10 +9,6 @@ from models.state import State
 
 @dataclass
 class Node:
-    """
-    Merepresentasikan node
-    pada Search Tree.
-    """
 
     state: State
 
@@ -29,9 +25,6 @@ class Node:
     depth: int = 0
 
     def calculate_f_cost(self) -> float:
-        """
-        f(n) = g(n) + h(n)
-        """
 
         self.f_cost = self.g_cost + self.h_cost
 
@@ -42,9 +35,6 @@ class Node:
         return self.parent is None
 
     def goal(self) -> bool:
-        """
-        Mengecek goal state.
-        """
 
         return self.state.is_goal()
 
@@ -52,9 +42,6 @@ class Node:
         self,
         activity: Activity,
     ) -> "Node":
-        """
-        Membuat child node.
-        """
 
         new_state = self.state.clone()
 
@@ -68,10 +55,6 @@ class Node:
         )
 
     def path(self) -> list["Node"]:
-        """
-        Mengembalikan jalur
-        dari root ke node.
-        """
 
         node = self
 

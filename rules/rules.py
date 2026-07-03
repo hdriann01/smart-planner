@@ -11,10 +11,6 @@ def rule_fatigue_threshold(
     state: State,
     activity: Activity,
 ) -> ValidationResponse:
-    """
-    Rule 1
-    Memastikan fatigue threshold valid.
-    """
 
     if user.fatigue_threshold <= 0:
         return ValidationResponse.invalid(
@@ -30,11 +26,6 @@ def rule_recovery(
     state: State,
     activity: Activity,
 ) -> ValidationResponse:
-    """
-    Rule 2
-    Setelah aktivitas yang membutuhkan recovery,
-    hari berikutnya wajib Rest.
-    """
 
     yesterday = state.last_activity
 
@@ -60,11 +51,6 @@ def rule_consecutive_workout(
     state: State,
     activity: Activity,
 ) -> ValidationResponse:
-    """
-    Rule 3
-    Maksimal tiga hari latihan berturut-turut.
-    Hari keempat wajib Rest.
-    """
 
     if state.day_index < 3:
         return ValidationResponse.valid()
@@ -99,10 +85,6 @@ def rule_fatigue_limit(
     state: State,
     activity: Activity,
 ) -> ValidationResponse:
-    """
-    Rule 4
-    Fatigue tidak boleh melebihi threshold pengguna.
-    """
 
     predicted_fatigue = (
         state.fatigue +
@@ -129,11 +111,6 @@ def rule_duration_limit(
     state: State,
     activity: Activity,
 ) -> ValidationResponse:
-    """
-    Rule 5
-    Durasi aktivitas tidak boleh melebihi
-    batas durasi pengguna.
-    """
 
     if activity.duration > user.max_duration:
 

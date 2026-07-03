@@ -15,9 +15,6 @@ DAY_NAMES = [
 
 
 def calories_chart(result: PlannerResult):
-    """
-    Bar chart kalori per hari.
-    """
 
     calories = [
         activity.calories if activity else 0
@@ -43,9 +40,6 @@ def calories_chart(result: PlannerResult):
 
 
 def fatigue_chart(result: PlannerResult):
-    """
-    Bar chart fatigue per hari.
-    """
 
     fatigue = [
         activity.fatigue if activity else 0
@@ -71,9 +65,6 @@ def fatigue_chart(result: PlannerResult):
 
 
 def workout_pie_chart(result: PlannerResult):
-    """
-    Pie chart Workout vs Rest.
-    """
 
     fig = go.Figure()
 
@@ -103,9 +94,6 @@ def comparison_chart(
     greedy: PlannerResult,
     astar: PlannerResult,
 ):
-    """
-    Grouped bar chart Greedy vs A*.
-    """
 
     metrics = [
         "Calories",
@@ -157,9 +145,6 @@ def execution_time_chart(
     greedy: PlannerResult,
     astar: PlannerResult,
 ):
-    """
-    Bar chart waktu eksekusi.
-    """
 
     fig = go.Figure()
 
@@ -193,9 +178,6 @@ def execution_time_chart(
 
 
 def fatigue_progress_chart(result: PlannerResult):
-    """
-    Line chart akumulasi fatigue.
-    """
 
     cumulative = []
 

@@ -11,9 +11,9 @@ class Activity:
 
     id: int
     name: str
-    duration: int              # menit
-    calories: int              # estimasi kalori terbakar
-    fatigue: int               # perubahan fatigue
+    duration: int              
+    calories: int             
+    fatigue: int              
     intensity: Intensity
     recovery_required: bool
     description: str

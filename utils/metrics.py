@@ -6,9 +6,6 @@ def calorie_target_percentage(
     user: User,
     result: PlannerResult,
 ) -> float:
-    """
-    Menghitung persentase pencapaian target kalori.
-    """
 
     if user.target_calories == 0:
         return 0.0
@@ -22,9 +19,6 @@ def calorie_target_percentage(
 def average_daily_calories(
     result: PlannerResult,
 ) -> float:
-    """
-    Menghitung rata-rata kalori per hari.
-    """
 
     if not result.schedule:
         return 0.0
@@ -38,9 +32,6 @@ def average_daily_calories(
 def average_daily_fatigue(
     result: PlannerResult,
 ) -> float:
-    """
-    Menghitung rata-rata fatigue per hari.
-    """
 
     if not result.schedule:
         return 0.0
@@ -54,9 +45,6 @@ def average_daily_fatigue(
 def workout_ratio(
     result: PlannerResult,
 ) -> float:
-    """
-    Persentase hari olahraga.
-    """
 
     total_days = len(result.schedule)
 
@@ -72,9 +60,6 @@ def workout_ratio(
 def rest_ratio(
     result: PlannerResult,
 ) -> float:
-    """
-    Persentase hari istirahat.
-    """
 
     total_days = len(result.schedule)
 
@@ -91,10 +76,6 @@ def schedule_efficiency(
     user: User,
     result: PlannerResult,
 ) -> float:
-    """
-    Mengukur efisiensi jadwal berdasarkan
-    pencapaian target kalori.
-    """
 
     target = user.target_calories
 
@@ -118,9 +99,6 @@ def remaining_calories(
     user: User,
     result: PlannerResult,
 ) -> int:
-    """
-    Menghitung sisa target kalori.
-    """
 
     return max(
         0,
@@ -133,9 +111,6 @@ def fatigue_utilization(
     user: User,
     result: PlannerResult,
 ) -> float:
-    """
-    Persentase penggunaan fatigue threshold.
-    """
 
     if user.fatigue_threshold == 0:
         return 0.0
@@ -150,10 +125,6 @@ def summary_metrics(
     user: User,
     result: PlannerResult,
 ) -> dict:
-    """
-    Mengembalikan seluruh metrik dalam
-    satu dictionary.
-    """
 
     return {
 

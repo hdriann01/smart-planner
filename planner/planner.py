@@ -10,13 +10,6 @@ from search.astar import AStarSearch
 
 
 class Planner:
-    """
-    Smart Planner System.
-
-    Bertugas mengoordinasikan proses penyusunan
-    jadwal olahraga mingguan menggunakan
-    Greedy Search maupun A* Search.
-    """
 
     def __init__(self):
 
@@ -28,9 +21,6 @@ class Planner:
         user: User,
         algorithm: SearchAlgorithm,
     ) -> PlannerResult:
-        """
-        Menjalankan algoritma yang dipilih.
-        """
 
         start_time = time.perf_counter()
 
@@ -87,9 +77,6 @@ class Planner:
         self,
         user: User,
     ) -> PlannerResult:
-        """
-        Menjalankan Greedy Search.
-        """
 
         return self.generate_schedule(
             user,
@@ -100,9 +87,6 @@ class Planner:
         self,
         user: User,
     ) -> PlannerResult:
-        """
-        Menjalankan A* Search.
-        """
 
         return self.generate_schedule(
             user,
@@ -111,9 +95,6 @@ class Planner:
 
     @staticmethod
     def available_algorithms() -> list[str]:
-        """
-        Mengembalikan daftar algoritma yang tersedia.
-        """
 
         return [
             algorithm.name

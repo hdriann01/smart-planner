@@ -3,11 +3,6 @@ from planner.result import PlannerResult
 
 
 class ScheduleScorer:
-    """
-    Mengevaluasi kualitas jadwal olahraga.
-
-    Seluruh skor dinormalisasi ke rentang 0–100.
-    """
 
     CALORIE_WEIGHT = 0.40
     FATIGUE_WEIGHT = 0.30
@@ -19,10 +14,6 @@ class ScheduleScorer:
         user: User,
         result: PlannerResult,
     ) -> float:
-        """
-        Mengukur seberapa dekat jadwal
-        terhadap target kalori pengguna.
-        """
 
         if user.target_calories <= 0:
             return 0.0
@@ -41,10 +32,6 @@ class ScheduleScorer:
         user: User,
         result: PlannerResult,
     ) -> float:
-        """
-        Semakin kecil fatigue,
-        semakin tinggi skor.
-        """
 
         if user.fatigue_threshold <= 0:
             return 0.0
@@ -62,11 +49,6 @@ class ScheduleScorer:
     def balance_score(
         result: PlannerResult,
     ) -> float:
-        """
-        Jadwal ideal memiliki
-        sekitar 5 hari olahraga
-        dan 2 hari istirahat.
-        """
 
         workout = result.total_workout_days()
 
@@ -100,10 +82,6 @@ class ScheduleScorer:
     def execution_score(
         result: PlannerResult,
     ) -> float:
-        """
-        Semakin cepat,
-        semakin tinggi skor.
-        """
 
         milliseconds = (
             result.execution_time * 1000
@@ -119,9 +97,6 @@ class ScheduleScorer:
         user: User,
         result: PlannerResult,
     ) -> float:
-        """
-        Menghasilkan skor akhir jadwal.
-        """
 
         target = cls.target_score(
             user,
@@ -168,9 +143,6 @@ class ScheduleScorer:
         greedy: PlannerResult,
         astar: PlannerResult,
     ) -> PlannerResult:
-        """
-        Memilih hasil terbaik.
-        """
 
         greedy_score = cls.calculate(
             user,
@@ -194,9 +166,6 @@ class ScheduleScorer:
         user: User,
         result: PlannerResult,
     ) -> dict:
-        """
-        Mengembalikan seluruh komponen skor.
-        """
 
         return {
 

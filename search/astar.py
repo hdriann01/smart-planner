@@ -11,15 +11,6 @@ from search.heuristic import HeuristicEvaluator
 
 
 class AStarSearch:
-    """
-    Implementasi algoritma A* Search.
-
-    Menggunakan:
-
-    - Open List (Priority Queue)
-    - Closed List
-    - Heuristic Evaluation
-    """
 
     def __init__(self):
 
@@ -33,9 +24,6 @@ class AStarSearch:
         self,
         user: User,
     ) -> State:
-        """
-        Menjalankan algoritma A*.
-        """
 
         start = Node(
             state=State()
@@ -72,9 +60,6 @@ class AStarSearch:
         user: User,
         current: Node,
     ) -> None:
-        """
-        Mengembangkan seluruh child node.
-        """
 
         for activity in get_all_activities():
 
@@ -109,10 +94,6 @@ class AStarSearch:
         self,
         node: Node,
     ) -> bool:
-        """
-        Mengecek apakah state
-        sudah pernah dieksplorasi.
-        """
 
         for closed in self.closed_list:
 
@@ -129,8 +110,5 @@ class AStarSearch:
         self,
         node: Node,
     ) -> list[Node]:
-        """
-        Mengembalikan jalur solusi.
-        """
 
         return node.path()

@@ -1,10 +1,6 @@
 from models.activity import Activity
 from models.enums import Intensity
 
-# ==========================================================
-# KNOWLEDGE BASE
-# ==========================================================
-
 ACTIVITIES = [
 
     Activity(
@@ -75,10 +71,6 @@ ACTIVITIES = [
 
 ]
 
-# ==========================================================
-# FAST LOOKUP
-# ==========================================================
-
 ACTIVITY_BY_ID = {
     activity.id: activity
     for activity in ACTIVITIES
@@ -88,10 +80,6 @@ ACTIVITY_BY_NAME = {
     activity.name: activity
     for activity in ACTIVITIES
 }
-
-# ==========================================================
-# FILTERED COLLECTIONS
-# ==========================================================
 
 REST_ACTIVITY = ACTIVITY_BY_NAME["Rest"]
 
@@ -119,61 +107,29 @@ RECOVERY_REQUIRED_ACTIVITIES = [
     if activity.requires_recovery()
 ]
 
-# ==========================================================
-# HELPER FUNCTIONS
-# ==========================================================
-
 def get_activity_by_id(activity_id: int) -> Activity:
-    """
-    Mengambil aktivitas berdasarkan ID.
-    """
-
     return ACTIVITY_BY_ID[activity_id]
 
 
 def get_activity_by_name(name: str) -> Activity:
-    """
-    Mengambil aktivitas berdasarkan nama.
-    """
-
     return ACTIVITY_BY_NAME[name]
 
 
 def get_all_activities() -> list[Activity]:
-    """
-    Mengembalikan seluruh aktivitas.
-    """
-
     return ACTIVITIES.copy()
 
 
 def get_light_activities() -> list[Activity]:
-    """
-    Mengembalikan seluruh aktivitas ringan.
-    """
-
     return LIGHT_ACTIVITIES.copy()
 
 
 def get_medium_activities() -> list[Activity]:
-    """
-    Mengembalikan seluruh aktivitas sedang.
-    """
-
     return MEDIUM_ACTIVITIES.copy()
 
 
 def get_heavy_activities() -> list[Activity]:
-    """
-    Mengembalikan seluruh aktivitas berat.
-    """
-
     return HEAVY_ACTIVITIES.copy()
 
 
 def get_recovery_required_activities() -> list[Activity]:
-    """
-    Mengembalikan aktivitas yang membutuhkan recovery.
-    """
-
     return RECOVERY_REQUIRED_ACTIVITIES.copy()

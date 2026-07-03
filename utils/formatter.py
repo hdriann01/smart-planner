@@ -13,10 +13,6 @@ DAY_NAMES = [
 
 
 def schedule_table(result: PlannerResult) -> list[dict]:
-    """
-    Mengubah jadwal menjadi list of dictionary
-    yang siap ditampilkan sebagai tabel Streamlit.
-    """
 
     rows = []
 
@@ -50,10 +46,6 @@ def comparison_table(
     greedy: PlannerResult,
     astar: PlannerResult,
 ) -> list[dict]:
-    """
-    Membuat tabel perbandingan
-    Greedy dan A*.
-    """
 
     return [
         {
@@ -84,9 +76,6 @@ def comparison_table(
 
 
 def summary(result: PlannerResult) -> dict:
-    """
-    Ringkasan hasil planner.
-    """
 
     return {
         "Algorithm": result.algorithm,

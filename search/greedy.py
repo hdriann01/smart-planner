@@ -10,12 +10,6 @@ from search.heuristic import HeuristicEvaluator
 
 
 class GreedySearch:
-    """
-    Implementasi Greedy Best First Search.
-
-    Memilih node dengan nilai heuristik
-    terkecil pada setiap langkah.
-    """
 
     def __init__(self):
 
@@ -25,9 +19,6 @@ class GreedySearch:
         self,
         user: User,
     ) -> State:
-        """
-        Menjalankan Greedy Search.
-        """
 
         current_state = State()
 
@@ -52,9 +43,6 @@ class GreedySearch:
         user: User,
         state: State,
     ) -> Node | None:
-        """
-        Memilih node dengan heuristic terkecil.
-        """
 
         candidates: list[Node] = []
 
@@ -92,8 +80,5 @@ class GreedySearch:
         self,
         state: State,
     ) -> bool:
-        """
-        Mengecek apakah goal tercapai.
-        """
 
         return state.is_goal()

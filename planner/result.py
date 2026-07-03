@@ -5,10 +5,6 @@ from models.activity import Activity
 
 @dataclass
 class PlannerResult:
-    """
-    Menyimpan hasil akhir proses penyusunan
-    jadwal olahraga mingguan.
-    """
 
     schedule: list[Activity | None]
 
@@ -27,10 +23,6 @@ class PlannerResult:
     message: str = ""
 
     def total_workout_days(self) -> int:
-        """
-        Menghitung jumlah hari latihan
-        (tidak termasuk Rest).
-        """
 
         return sum(
             1
@@ -39,9 +31,6 @@ class PlannerResult:
         )
 
     def total_rest_days(self) -> int:
-        """
-        Menghitung jumlah hari Rest.
-        """
 
         return sum(
             1
@@ -50,9 +39,6 @@ class PlannerResult:
         )
 
     def schedule_names(self) -> list[str]:
-        """
-        Mengembalikan daftar nama aktivitas.
-        """
 
         return [
             activity.name if activity else "-"
@@ -60,9 +46,6 @@ class PlannerResult:
         ]
 
     def to_dict(self) -> dict:
-        """
-        Mengubah hasil menjadi dictionary.
-        """
 
         return {
             "algorithm": self.algorithm,

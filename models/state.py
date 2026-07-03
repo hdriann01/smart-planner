@@ -6,10 +6,6 @@ from models.activity import Activity
 
 @dataclass
 class State:
-    """
-    Merepresentasikan kondisi Smart Planner
-    pada suatu titik dalam proses pencarian.
-    """
 
     schedule: list[Activity | None] = field(
         default_factory=lambda: [None] * 7
@@ -28,9 +24,6 @@ class State:
     history: list[str] = field(default_factory=list)
 
     def add_activity(self, activity: Activity) -> None:
-        """
-        Menambahkan aktivitas ke hari saat ini.
-        """
 
         if self.completed:
             raise ValueError("Schedule has already been completed.")
@@ -46,9 +39,6 @@ class State:
         self.history.append(activity.name)
 
     def next_day(self) -> None:
-        """
-        Berpindah ke hari berikutnya.
-        """
 
         self.day_index += 1
 
@@ -56,18 +46,12 @@ class State:
             self.completed = True
 
     def advance(self, activity: Activity) -> None:
-        """
-        Menjalankan satu langkah simulasi.
-        """
 
         self.add_activity(activity)
 
         self.next_day()
 
     def clone(self):
-        """
-        Membuat salinan State.
-        """
 
         return deepcopy(self)
 
@@ -81,9 +65,6 @@ class State:
         return self.completed
 
     def reset(self):
-        """
-        Mengembalikan State ke kondisi awal.
-        """
 
         self.schedule = [None] * 7
 

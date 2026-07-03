@@ -21,11 +21,6 @@ Rule = Callable[
 
 
 class RuleEngine:
-    """
-    Forward Chaining Rule Engine.
-
-    Menjalankan seluruh rule secara berurutan.
-    """
 
     def __init__(self):
 
@@ -47,11 +42,6 @@ class RuleEngine:
         state: State,
         activity: Activity,
     ) -> ValidationResponse:
-        """
-        Menjalankan seluruh rule.
-
-        Berhenti pada rule pertama yang gagal.
-        """
 
         for rule in self.rules:
 
@@ -72,10 +62,6 @@ class RuleEngine:
         state: State,
         activity: Activity,
     ) -> list[ValidationResponse]:
-        """
-        Menjalankan seluruh rule tanpa berhenti.
-        Berguna untuk debugging dan testing.
-        """
 
         return [
             rule(user, state, activity)

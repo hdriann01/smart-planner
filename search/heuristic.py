@@ -4,19 +4,12 @@ from models.user import User
 
 
 class HeuristicEvaluator:
-    """
-    Bertugas menghitung seluruh nilai heuristik
-    yang digunakan oleh Greedy Search maupun A*.
-    """
 
     @staticmethod
     def remaining_calories(
         user: User,
         state: State,
     ) -> int:
-        """
-        Menghitung sisa target kalori.
-        """
 
         return max(
             0,
@@ -28,10 +21,6 @@ class HeuristicEvaluator:
         user: User,
         state: State,
     ) -> float:
-        """
-        Estimasi kebutuhan kalori
-        pada hari yang tersisa.
-        """
 
         remaining_days = state.remaining_days()
 
@@ -50,12 +39,6 @@ class HeuristicEvaluator:
         user: User,
         state: State,
     ) -> float:
-        """
-        Nilai heuristik h(n).
-
-        Semakin kecil nilainya,
-        semakin baik state tersebut.
-        """
 
         calorie_score = (
             HeuristicEvaluator
@@ -71,14 +54,6 @@ class HeuristicEvaluator:
 
     @staticmethod
     def path_cost(state: State) -> float:
-        """
-        g(n)
-
-        Biaya perjalanan dari root
-        menuju state sekarang.
-
-        Saat ini menggunakan fatigue.
-        """
 
         return state.fatigue
 
@@ -87,11 +62,6 @@ class HeuristicEvaluator:
         user: User,
         state: State,
     ) -> float:
-        """
-        f(n)
-
-        Digunakan oleh A*.
-        """
 
         return (
             HeuristicEvaluator.path_cost(state)
@@ -107,10 +77,6 @@ class HeuristicEvaluator:
         user: User,
         node: Node,
     ) -> None:
-        """
-        Memperbarui nilai
-        g(n), h(n), dan f(n).
-        """
 
         node.g_cost = (
             HeuristicEvaluator
@@ -132,9 +98,6 @@ class HeuristicEvaluator:
         node_a: Node,
         node_b: Node,
     ) -> Node:
-        """
-        Mengembalikan node terbaik.
-        """
 
         if node_a.f_cost <= node_b.f_cost:
             return node_a

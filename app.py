@@ -20,10 +20,6 @@ from utils.charts import (
 from utils.score import ScheduleScorer
 
 
-# ==========================================================
-# KONFIGURASI HALAMAN
-# ==========================================================
-
 st.set_page_config(
     page_title="RUSH",
     page_icon="🏃",
@@ -34,10 +30,6 @@ st.set_page_config(
 planner = Planner()
 
 
-# ==========================================================
-# SESSION STATE
-# ==========================================================
-
 if "generated" not in st.session_state:
     st.session_state.generated = False
 
@@ -47,10 +39,6 @@ if "best_result" not in st.session_state:
 if "user" not in st.session_state:
     st.session_state.user = None
 
-
-# ==========================================================
-# HEADER
-# ==========================================================
 
 st.title("✨ Temukan Jadwal Olahraga Terbaik untuk Anda")
 
@@ -68,10 +56,6 @@ Silakan lengkapi data pada panel di sebelah kiri, kemudian tekan tombol **Buat J
 
 st.divider()
 
-
-# ==========================================================
-# SIDEBAR
-# ==========================================================
 
 st.sidebar.title("👤 Profil Pengguna")
 
@@ -139,32 +123,17 @@ with st.sidebar.form("planner_form"):
     )
 
 
-# ==========================================================
-# AREA KONTEN UTAMA
-# ==========================================================
-
 main_container = st.container()
-# ==========================================================
-# PROSES PEMBUATAN JADWAL
-# ==========================================================
 
 if submitted:
 
     try:
-
-        # --------------------------------------------------
-        # Validasi Input
-        # --------------------------------------------------
 
         if not nama.strip():
 
             st.warning("Silakan masukkan nama Anda.")
 
             st.stop()
-
-        # --------------------------------------------------
-        # Membuat Objek User
-        # --------------------------------------------------
 
         user = User(
             id=1,
@@ -179,10 +148,6 @@ if submitted:
 
         st.session_state.user = user
 
-        # --------------------------------------------------
-        # Menjalankan Smart Planner
-        # --------------------------------------------------
-
         with st.spinner("⏳ Sedang menyusun jadwal olahraga terbaik..."):
 
             greedy_result = planner.run_greedy(user)
@@ -195,17 +160,9 @@ if submitted:
                 astar_result,
             )
 
-        # --------------------------------------------------
-        # Menyimpan Hasil Terbaik
-        # --------------------------------------------------
-
         st.session_state.best_result = best_result
 
         st.session_state.generated = True
-
-        # --------------------------------------------------
-        # Pesan Berhasil
-        # --------------------------------------------------
 
         st.success(
             """
@@ -231,10 +188,6 @@ Detail kesalahan:
 """
         )
 
-# ==========================================================
-# DASHBOARD HASIL
-# ==========================================================
-
 if st.session_state.generated:
 
     result = st.session_state.best_result
@@ -254,10 +207,6 @@ if st.session_state.generated:
 
         st.divider()
 
-        # ==================================================
-        # KARTU HASIL
-        # ==================================================
-
         st.success(
             """
 ## 🎉 Jadwal Olahraga Anda Siap!
@@ -267,10 +216,6 @@ Berikut merupakan rekomendasi jadwal olahraga mingguan yang telah disusun berdas
 Semoga jadwal ini dapat membantu Anda mencapai target kebugaran secara lebih terarah dan konsisten.
 """
         )
-
-        # ==================================================
-        # RINGKASAN
-        # ==================================================
 
         st.subheader("📌 Ringkasan Jadwal")
 
@@ -306,10 +251,6 @@ Semoga jadwal ini dapat membantu Anda mencapai target kebugaran secara lebih ter
 
         st.divider()
 
-        # ==================================================
-        # JADWAL
-        # ==================================================
-
         st.subheader("📅 Jadwal Olahraga Mingguan")
 
         schedule_df = pd.DataFrame(
@@ -334,10 +275,6 @@ Semoga jadwal ini dapat membantu Anda mencapai target kebugaran secara lebih ter
         )
 
         st.divider()
-
-        # ==================================================
-        # RINGKASAN STATISTIK
-        # ==================================================
 
         st.subheader("📊 Ringkasan Statistik")
 
@@ -390,10 +327,6 @@ Ringkasan statistik memberikan gambaran mengenai hasil jadwal olahraga yang tela
 """
         )
 
-        # ==================================================
-        # VISUALISASI HASIL
-        # ==================================================
-
         st.divider()
 
         st.subheader("📈 Visualisasi Jadwal")
@@ -405,10 +338,6 @@ jadwal olahraga yang telah direkomendasikan sehingga
 lebih mudah dipahami.
 """
         )
-
-        # --------------------------------------------------
-        # Grafik Kalori & Kelelahan
-        # --------------------------------------------------
 
         col1, col2 = st.columns(2)
 
@@ -426,10 +355,6 @@ lebih mudah dipahami.
                 use_container_width=True,
             )
 
-        # --------------------------------------------------
-        # Grafik Latihan & Fatigue
-        # --------------------------------------------------
-
         col3, col4 = st.columns(2)
 
         with col3:
@@ -446,10 +371,6 @@ lebih mudah dipahami.
                 use_container_width=True,
             )
 
-        # ==================================================
-        # PESAN PENUTUP
-        # ==================================================
-
         st.divider()
 
         st.success(
@@ -464,10 +385,6 @@ dan sesuaikan intensitas latihan dengan kondisi tubuh
 agar target kebugaran dapat tercapai secara optimal.
 """
         )
-
-# ==========================================================
-# FOOTER
-# ==========================================================
 
 st.divider()
 

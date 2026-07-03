@@ -5,32 +5,23 @@ from models.enums import ActivityLevel
 
 @dataclass
 class User:
-    """
-    Merepresentasikan data pengguna Smart Planner System.
-    """
 
     id: int
     name: str
     age: int
-    weight: float          # kg
-    height: float          # cm
+    weight: float
     activity_level: ActivityLevel
-    target_calories: int   # Target kalori mingguan
-    max_duration: int      # Menit per hari
+    target_calories: int
+    max_duration: int
 
     fatigue_threshold: int = field(init=False)
 
     def __post_init__(self):
-        """
-        Dipanggil otomatis setelah object dibuat.
-        """
+
         self.validate()
         self.fatigue_threshold = self.calculate_fatigue_threshold()
 
     def validate(self) -> None:
-        """
-        Memastikan seluruh data pengguna valid.
-        """
 
         if self.age <= 0:
             raise ValueError("Age must be greater than 0.")
@@ -48,18 +39,12 @@ class User:
             raise ValueError("Maximum duration must be greater than 0.")
 
     def calculate_bmi(self) -> float:
-        """
-        Menghitung Body Mass Index (BMI).
-        """
 
         height_meter = self.height / 100
 
         return round(self.weight / (height_meter ** 2), 2)
 
     def bmi_category(self) -> str:
-        """
-        Menentukan kategori BMI.
-        """
 
         bmi = self.calculate_bmi()
 
@@ -75,9 +60,6 @@ class User:
         return "Obese"
 
     def calculate_fatigue_threshold(self) -> int:
-        """
-        Menentukan fatigue threshold berdasarkan tingkat aktivitas.
-        """
 
         mapping = {
             ActivityLevel.SEDENTARY: 40,
@@ -88,16 +70,10 @@ class User:
         return mapping[self.activity_level]
 
     def is_beginner(self) -> bool:
-        """
-        Mengecek apakah pengguna termasuk pemula.
-        """
 
         return self.activity_level == ActivityLevel.SEDENTARY
 
     def to_dict(self) -> dict:
-        """
-        Mengubah object menjadi dictionary.
-        """
 
         return {
             "id": self.id,

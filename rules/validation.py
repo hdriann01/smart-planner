@@ -5,9 +5,6 @@ from models.enums import ValidationResult
 
 @dataclass(frozen=True)
 class ValidationResponse:
-    """
-    Hasil validasi Rule-Based System.
-    """
 
     is_valid: bool
 
