@@ -10,6 +10,7 @@ class User:
     name: str
     age: int
     weight: float
+    height: float
     activity_level: ActivityLevel
     target_calories: int
     max_duration: int
